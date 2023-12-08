@@ -11,7 +11,10 @@ https://www.kristhecodingunicorn.com/post/kubernetes-service-to-proxy-to-externa
 # Running Locally
 
 1. Install kind cluster `kind create cluster`
-2. Install the manifests `kubectl apply -f external-proxy/`
-3. View the ingress object `kubectl get ing proxy-service-ingress -o yaml`
-4. **PROBLEM** Note that at this point, the ingress object has no ip address. Is this is because the ingress controller is not running? I installed the nginx ingress controller and its still not working.
+2. Install the nginx ingress controller 
+   1. https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-helm/
+   2. MIGHT WORK: `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/kind/deploy.yaml`
+3. Install the manifests `kubectl apply -f external-proxy/`
+4. View the ingress object `kubectl get ing proxy-service-ingress -o yaml`
+5. **PROBLEM** Note that at this point, the ingress object has no ip address. Is this is because the ingress controller is not running? I installed the nginx ingress controller and its still not working.
 
