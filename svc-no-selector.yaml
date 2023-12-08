@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: foo-svc
+  name: svc-no-selector
+spec:
+  ports:
+  - name: 80-80
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  type: ClusterIP
+
+# When a Service without selector is created, no Endpoint Object is 
+# created automatically, so you need to create it manually and provide
+# the backend address that the Service will route the traffic to.
+# If ExternalName Service is created, no Endpoint Object is needed.
+
+# Please note that you need to provide identical name for 
+# the Service AND the Endpoint in order for the Service 
+# to be mapped to the Endpoint automatically.

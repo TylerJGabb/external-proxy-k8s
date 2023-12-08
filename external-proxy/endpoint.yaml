@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: proxy-service # Must be equal to Service name for automatic mapping
+subsets:
+- addresses:
+  # google.com
+  - ip: 142.250.72.142 # IP address of your external service that you would like to proxy requests to
+  ports:
+  - port: 80

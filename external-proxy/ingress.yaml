@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+  name: proxy-service-ingress
+spec:
+  ingressClassName: nginx
+  # tls:
+  # - hosts:
+  #   - proxy-service.dev.com
+  #   secretName: tls-dev-com
+  rules:
+  - host: proxy-service.dev.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: proxy-service # Here you specify the name of the Service traffic must be routed to
+            port:
+              number: 80
+        path: /
+        pathType: ImplementationSpecific

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: foo-svc
+  name: svc-with-selector-app-foo
+spec:
+  ports:
+  - name: 80-80
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: foo
+  type: ClusterIP
+
+# When a Service with selector is created, a respective Endpoint 
+# Object is created automatically - it will handle a list of
+# IPs that the Service will redirect traffic to.
